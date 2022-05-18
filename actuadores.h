@@ -44,5 +44,12 @@ void Actuadores:: printLCD(void){
  lcd.setCursor(0,0);
  lcd.print ("L/m: ");
  lcd.print (sensors.CDF());
+ lcd.setCursor(10,0);
+ lcd.print ("T: ");
+ lcd.print (sensors.temperatura());
+ lcd.setCursor(0,1);
+ lcd.print ("Hum: ");
+ lcd.print (sensors.humedad());
+ 
 }
 /*-----------------------------------------------------------------*/

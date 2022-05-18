@@ -34,13 +34,6 @@ void setup() {
   
   /*~~~~~~~~~~~~~~~INICIALIZACIÓN DE DHT11~~~~~~~~~~~~~~~~~~~*/
   dht.begin();
-  
-  /*~~~~~~~~~~~~~~~INICIALIZACIÓN DE PANTALLA LCD~~~~~~~~~~~~*/
-  actuators.LCD_init();
-
-  /*~~~~~~~~~~~~~~~CONFIGURACIÓN DE RED PARA MQTT SERVER~~~~~~~~~~~~~~*/
-  mqtt.setup_WiFi ( );
-  mqtt.set_MQTT_server ( ); // inicialización de MQTT server
 
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~INICIALIZACIÓN DE RTC~~~~~~~~~~~~~~~~~~~~~~~~~*/
   RTC.rtc_init();
@@ -48,6 +41,14 @@ void setup() {
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~INICIALIZACIÓN DE MICROSD~~~~~~~~~~~~~~*/
   MSD.MicroSD_init();
   
+  /*~~~~~~~~~~~~~~~INICIALIZACIÓN DE PANTALLA LCD~~~~~~~~~~~~*/
+  actuators.LCD_init();
+
+  /*~~~~~~~~~~~~~~~CONFIGURACIÓN DE RED PARA MQTT SERVER~~~~~~~~~~~~~~*/ 
+  mqtt.setup_WiFi ( );
+  mqtt.set_MQTT_server ( ); // inicialización de MQTT server
+
+  client.setCallback(callback); 
 }
 
 void loop() { 
@@ -55,9 +56,10 @@ void loop() {
   tasks.currentMillis = millis(); 
   
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~LLAMADA A FUNCIONES DE tareas.h -> Tareas::nameTask() ~~~~~~~~~~~~~~*/
-  tasks._2s(); //imprime datos en lcd
   tasks._4s(); //llama a flujometro (mide caudal de flujo)
   tasks._5s(); //(des)activa bomba mediante relevador
   tasks._6s(); //llama a DHT11
+  tasks._8s(); //imprime datos en lcd
   tasks._10s(); //reconexión y publicación a MQTT
+  
 }

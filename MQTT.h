@@ -17,14 +17,15 @@ void MQTT :: set_MQTT_server ( void ) {
 }
 
 void MQTT :: subscribe_MQTT ( void ) {
-
   
+  //Serial.println ( F ( "Suscribiendo a Topic" ) );
+  //client.subscribe( TOPIC );
 }
 
 void MQTT :: publish_MQTT ( void ) {
 
-  String hola = "....";
-  Serial.println ( "Publicando información" );
+  //String hola = "....";
+  //Serial.println ( "Publicando información" );
   client.publish( TOPIC, MSD.json_string.c_str()); //envío de info para publicación con tema y json predefinidos
   
 }
@@ -69,4 +70,17 @@ void MQTT :: setup_WiFi ( void ) {
   
   Serial.println ( "WiFi configurado con la IP: " );
   
+}
+
+
+void callback(char* topic, byte* pld, unsigned int length) {
+  Serial.print("Message arrived on topic: ");
+  Serial.print(TOPIC);
+  Serial.print("datos");
+  String msjt;//mjs a enviar
+  for (int i = 0; i < length; i++) {
+    Serial.print((char)pld[i]);
+    msjt += (char)pld[i];
+  }
+  Serial.println();
 }

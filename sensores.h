@@ -35,7 +35,7 @@ long funcion(void) //obtiene la frecuencia
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~MÉTODO HUMEDAD~~~~~~~~~~~~~~*/
 int Sensores::humedad (void){ 
   int humidity = analogRead(sensor_hum);
-  Serial.println(humidity);
+  //Serial.println(humidity);
   return humidity;
 }
 
@@ -45,8 +45,8 @@ float Sensores::CDF (void){ //Metodo Caudal de flujo
  float frecuencia=funcion(); //frecuencia de los pulsos
  float Caudal=frecuencia/7.5; //calculamos el caudal en L/m
 
-  Serial.print ("Litros por  minuto: ");
-  Serial.println (Caudal);
+  //Serial.print ("Litros por  minuto: ");
+  //Serial.println (Caudal);
   return Caudal;
 }
 
@@ -57,8 +57,8 @@ int Sensores::temperatura(void){
     Serial.println(F("Fallo en intento de lectura de sensor DHT11"));
   }*/
 
-  Serial.print(F("%  Temperature: "));
-  Serial.print(t);
-  Serial.print(F("°C "));
+  //Serial.print(F("%  Temperature: "));
+  //Serial.print(t);
+  //Serial.print(F("°C "));
   return t;
 }
