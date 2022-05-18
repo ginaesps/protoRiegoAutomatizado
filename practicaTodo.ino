@@ -56,7 +56,6 @@ void loop() {
   
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~LLAMADA A FUNCIONES DE tareas.h -> Tareas::nameTask() ~~~~~~~~~~~~~~*/
   tasks._2s(); //imprime datos en lcd
-  tasks._3s(); //llama a giroscopio
   tasks._4s(); //llama a flujometro (mide caudal de flujo)
   tasks._5s(); //(des)activa bomba mediante relevador
   tasks._6s(); //llama a DHT11

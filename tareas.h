@@ -4,7 +4,6 @@ class Tareas{
   public:
   unsigned long 
                 task_2s = 0,
-                task_3s = 0,
                 task_4s = 0,
                 task_5s = 0,
                 task_6s = 0,
@@ -14,7 +13,6 @@ class Tareas{
   
     //Declaración de las task
     void _2s (void);
-    void _3s (void);
     void _4s (void);
     void _5s (void);
     void _6s (void);
@@ -27,14 +25,6 @@ void Tareas::_2s(){
   actuators.printLCD();
   task_2s = currentMillis;
   }
-}
-
-/*--------Task que llama al giroscopio cada 3seg--------*/
-void Tareas::_3s(){// Verificar si pasan 3 segundos
-  if (( currentMillis - task_3s)>= TEMP_TIME){//Pasaron 3 segundos o TEMP_TIME
-  sensors.giroscopio(); // Revisar pos del giroscopio
-  task_3s = currentMillis; //Tiempo pasado va a ser tiempo presente 
-}
 }
 
 /*--------Task que llama al flujometro cada 4seg--------*/
