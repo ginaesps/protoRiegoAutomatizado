@@ -40,10 +40,10 @@ void setup() {
   
   /*~~~~~~~CONFIGURACIÓN DE PINES A MODO OUTPUT~~~~~~~~~~~~~~*/
   pinMode(rele, OUTPUT);
-  pinMode(PinSensor, INPUT);
+  pinMode(PinCDF, INPUT);
   
   /*~~~~~~~~~~~~~~~INTERRUPCIÓN PARA FLUJOMETRO~~~~~~~~~~~~~~*/
-  attachInterrupt(PinSensor,pulso,RISING);
+  attachInterrupt(PinCDF,pulso,RISING);
   
   /*~~~~~~~~~~~~~~~INICIALIZACIÓN DE DHT11~~~~~~~~~~~~~~~~~~~*/
   dht.begin();
@@ -69,10 +69,10 @@ void loop() {
   tasks.currentMillis = millis(); 
   
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~LLAMADA A FUNCIONES DE tareas.h -> Tareas::nameTask() ~~~~~~~~~~~~~~*/
-  tasks._4s(); //llama a flujometro (mide caudal de flujo)
-  tasks._5s(); //(des)activa bomba mediante relevador
-  tasks._6s(); //llama a DHT11
-  tasks._8s(); //imprime datos en lcd
-  tasks._10s(); //reconexión y publicación a MQTT
+  tasks._flujometro(); //llama a flujometro (mide caudal de flujo)
+  tasks._higometroBomba(); //(des)activa bomba mediante relevador
+  tasks._dht11(); //llama a DHT11
+  tasks._printLCD(); //imprime datos en lcd
+  tasks._connectionMQTT(); //reconexión y publicación a MQTT
   
 }

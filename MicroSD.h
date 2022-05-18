@@ -29,7 +29,7 @@ void MicroSD::FileID(void){//nombrado de archivo c/ dia/mes/año.JSON
   filename += EXTENSION;
 }
 
-void MicroSD::JSON(void){
+void MicroSD::JSON(void){ //AGREGAR DATETIME DE CUANDO SE ACTIVA LA BOMBA
   DynamicJsonDocument obj(1024);//creación de doc para almacenamiento de mediciones
   obj["Humedad"] = sensors.humedad();
   obj["Flujo"] = sensors.CDF();

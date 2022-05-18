@@ -4,7 +4,7 @@
   DHT dht(DHTPIN, DHTTYPE); //inicialización del sensor
 
 #define sensor_hum 15
-#define PinSensor 16 //pin para caudal de flujo
+#define PinCDF 16 //pin para caudal de flujo
 
 class Sensores { 
 public:   
@@ -21,7 +21,7 @@ volatile int Contador; //variable que cuenta los pulsos
     Contador++;
   }
   
-long funcion(void) //obtiene la frecuencia
+long obtencionFrecuenciaCDF(void) //obtiene la frecuencia
 {
   long cantidad;
   Contador = 0;  
@@ -35,18 +35,14 @@ long funcion(void) //obtiene la frecuencia
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~MÉTODO HUMEDAD~~~~~~~~~~~~~~*/
 int Sensores::humedad (void){ 
   int humidity = analogRead(sensor_hum);
-  //Serial.println(humidity);
   return humidity;
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~MÉTODO FLUJOMETRO~~~~~~~~~~~~~~*/
 float Sensores::CDF (void){ //Metodo Caudal de flujo
    
- float frecuencia=funcion(); //frecuencia de los pulsos
- float Caudal=frecuencia/7.5; //calculamos el caudal en L/m
-
-  //Serial.print ("Litros por  minuto: ");
-  //Serial.println (Caudal);
+ float frecuencia=obtencionFrecuenciaCDF(); //frecuencia de los pulsos
+ float Caudal=frecuencia/7.5; //calculamos el caudal en L/m, factor de conversion entre frecuencia y cauda=7.5, depende de parametros del sensor
   return Caudal;
 }
 
@@ -56,9 +52,5 @@ int Sensores::temperatura(void){
   /*if (isnan(t)) { //en caso de que la medición de temperatura detecte algo que no sea un número, la medición del DHT11 está fallando
     Serial.println(F("Fallo en intento de lectura de sensor DHT11"));
   }*/
-
-  //Serial.print(F("%  Temperature: "));
-  //Serial.print(t);
-  //Serial.print(F("°C "));
   return t;
 }

@@ -3,11 +3,11 @@ class MQTT {
   public: //variables públicas
   
   public: //funciones públicas
-    void subscribe_MQTT ( void );
-    void publish_MQTT ( void );
-    void reconnect_MQTT ( void );
-    void setup_WiFi ( void ); 
-    void set_MQTT_server ( void );
+    void subscribe_MQTT ( void ); //función para suscripción
+    void publish_MQTT ( void ); //publicación de string de caracteres generado en MSD
+    void reconnect_MQTT ( void ); //revisión de conexión a servidor MQTT
+    void setup_WiFi ( void ); //configuración de conexión a wifi
+    void set_MQTT_server ( void );//configuración de conexión a servidor MQTT
   };
 
 void MQTT :: set_MQTT_server ( void ) {
@@ -32,7 +32,7 @@ void MQTT :: publish_MQTT ( void ) {
 
 void MQTT :: reconnect_MQTT ( void ) {
 
-  if ( ! client.connected ( ) ) {
+  if ( ! client.connected ( ) ) { 
 
     while ( ! client.connected ( ) ) {
       
@@ -73,7 +73,7 @@ void MQTT :: setup_WiFi ( void ) {
 }
 
 
-void callback(char* topic, byte* pld, unsigned int length) {
+void callback(char* topic, byte* pld, unsigned int length) { //función de callback para suscripción a TOPIC, muestra info enviada por puerto serial
   Serial.print("Message arrived on topic: ");
   Serial.print(TOPIC);
   Serial.print("datos");

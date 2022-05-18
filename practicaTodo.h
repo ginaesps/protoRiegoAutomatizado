@@ -21,12 +21,11 @@ Sensores sensors;
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~CONFIGURACIÓN DE CLIENTE PARA HACER PUBLICACIONES MQTT~~~~~~~~~~~~~~*/
 #include <PubSubClient.h>
   PubSubClient client ( ESP32_WIFI );
-const char* HOTSPOT_WIFI = "MSI";
+const char* HOTSPOT_WIFI = "EX_6CHOTSPOT";
 const char* HOTSPOT_PWD = "12345678";  
 const char* MQTT_SERVER = "test.mosquitto.org";
 #define MQTT_PORT 1883
 #define TOPIC "E2/6D" 
-long lastMsg = 0; //parámetro en evaluación de tiempo en reconexión y publicación MQTT
 
 #include <ArduinoJson.h> //librería para usar JSON
 #include <SD.h> //librería para trabajar MicroSD
