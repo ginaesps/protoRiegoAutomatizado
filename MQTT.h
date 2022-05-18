@@ -19,7 +19,7 @@ void MQTT :: set_MQTT_server ( void ) {
 void MQTT :: subscribe_MQTT ( void ) {
   
   //Serial.println ( F ( "Suscribiendo a Topic" ) );
-  //client.subscribe( TOPIC );
+  client.subscribe( TOPIC );
 }
 
 void MQTT :: publish_MQTT ( void ) {
