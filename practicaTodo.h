@@ -8,6 +8,7 @@ LiquidCrystal_I2C lcd(DISPLAY, COLUMNAS, FILAS);
 /*---------------------------------------------*/
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~INSTANCIA A LIBRERÍAS DE SENSORES~~~~~~~~~~~~~~*/
+#include "sensores.h"
 Sensores sensors;
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~INSTANCIA A LIBRERÍAS DE ACTUADORES~~~~~~~~~~~~~~*/
@@ -20,7 +21,7 @@ Sensores sensors;
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~CONFIGURACIÓN DE CLIENTE PARA HACER PUBLICACIONES MQTT~~~~~~~~~~~~~~*/
 #include <PubSubClient.h>
   PubSubClient client ( ESP32_WIFI );
-const char* HOTSPOT_WIFI = "EX_6D_HOTSPOT";
+const char* HOTSPOT_WIFI = "MSI";
 const char* HOTSPOT_PWD = "12345678";  
 const char* MQTT_SERVER = "test.mosquitto.org";
 #define MQTT_PORT 1883

@@ -1,6 +1,7 @@
 #define rele 2
   const byte pinBuzzer = 17;
   byte salida = 10; 
+  byte apagarBuzzer = 0; 
   
 class Actuadores{
   public:
@@ -8,6 +9,7 @@ class Actuadores{
   void relayOn (void);
   void relayOff (void);
   void buzzer (void);
+  void buzzerOff (void);
   void LCD_init(void);
   void printLCD (void);
 };
@@ -25,6 +27,11 @@ void Actuadores::relayOff(void){
 void Actuadores::buzzer (void){
   pinMode(pinBuzzer, OUTPUT);
   analogWrite(pinBuzzer, salida);
+}
+
+void Actuadores::buzzerOff (void){
+  pinMode(pinBuzzer, OUTPUT);
+  analogWrite(pinBuzzer, apagarBuzzer);
 }
 
 /*--------------------------Funciones para LCD--------------------*/

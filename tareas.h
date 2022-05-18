@@ -57,7 +57,7 @@ void Tareas::_5s(){
     actuators.relayOn();
     //sensors.CDF(); Se plantea que se mida el flujo cuando este activada la bomba
   }
-  else{
+  else {
     //esta humedo se desactiva o no pasa nada xd
     actuators.relayOff();
   }
@@ -67,17 +67,19 @@ void Tareas::_5s(){
 
 /*--------Task que llama al DHT11 cada 6seg-------*/
 void Tareas::_6s(){
-  if (( currentMillis - task_5s)>= 5000){//Pasaron 6 segundos
+  if (( currentMillis - task_6s)>= 6000){//Pasaron 6 segundos
     Serial.println("temperatura ambiental");
     int temperature = sensors.temperatura(); //revisar sensor de temperatura ambiental
-    if(temperature < 10 || temperature > 27){
+    if(temperature >= 32){
       actuators.buzzer();
+    } else{ 
+      actuators.buzzerOff();
     }
     task_6s = currentMillis; //Tiempo pasado va a ser tiempo presente 
   }
 }
 
-/*--------Task que llama al flujometro cada 4seg--------*/
+/*--------Task que reconecta y publica con MQTT--------*/
 void Tareas::_10s(){
   if (( currentMillis - task_10s)>= 10000){
    long now = millis();

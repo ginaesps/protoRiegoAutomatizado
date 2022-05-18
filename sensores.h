@@ -2,7 +2,6 @@
 #define DHTPIN 4     // pin digital conectado a dht11
 #define DHTTYPE DHT11   
   DHT dht(DHTPIN, DHTTYPE); //inicialización del sensor
-float t = dht.readTemperature(); //lectura de temperatura en °C
 
 #define sensor_hum 15
 #define PinSensor 16 //pin para caudal de flujo
@@ -59,13 +58,14 @@ void Sensores::giroscopio(void){ //Metodo giroscopio
   Serial.println ("giroscopio");
 }
 
-void Sensores::temperatura(void){
-  if (isnan(t)) { //en caso de que la medición de temperatura detecte algo que no sea un número, la medición del DHT11 está fallando
+int Sensores::temperatura(void){
+  float t = dht.readTemperature(); //lectura de temperatura en °C
+  /*if (isnan(t)) { //en caso de que la medición de temperatura detecte algo que no sea un número, la medición del DHT11 está fallando
     Serial.println(F("Fallo en intento de lectura de sensor DHT11"));
-    return;
-  }
+  }*/
 
   Serial.print(F("%  Temperature: "));
   Serial.print(t);
   Serial.print(F("°C "));
+  return t;
 }
