@@ -4,18 +4,31 @@
 *      FECHA:       18 de mayo de 2022.                                      *
 *      VERSIÓN:     2.1.                                                     *
 *                                                                            *
-*      AUTOR:       Esli Castellanos Berján.                                 *
-*      E-MAIL:      esli_castellanos@ucol.mx.                                *
+*      AUTOR:       Regina Espinosa González                                 *
+*                   María Alejandra Velazco Baltazar                         *
+*                   Adelina Mancilla Rojas                                   *
+*                   Andrew Joshua Craig Montiel                              *
+*      REPOSITORIO: https://github.com/ginaesps/protoRiegoAutomatizado       *
 *      COMPAÑÍA:    Universidad de Colima - Facultad de Telemática.          *
 *                                                                            *
-*      uC:          ESP32-D0WD Dual Core.                                    *
-*      Nombre:      ESP32-S.                                                 *
+*      SENSORES UTILIZADOS:          ESP32-D0WD Dual Core.                   *
+*                                    DHT11                                   *
+*                                    YFS201                                  *
+*                                    FC-28                                   *
+*                                                                            *
+*      ACTUADORES UTILIZADOS:        Bomba de agua                           *
+*                                    Relevador G3MB-202P                     *
+*                                    Buzzer                                  *
+*                                                                            *
+*      ADICIONALES UTILIZADOS:       Mini MicroSD                            *
+*                                    RTC DS1307                              *
+*                                    LCD1602 + I2C                           *
 *                                                                            *
 ******************************************************************************
 *                                                                            *
 *      DESCRIPCIÓN DEL PROGRAMA: Creación de prototipo de riego automatizado *
 *      con registro en una MicroSD, medición de tiempo con RTC y sensores    *  
-*      de humedad de tierra, temperatura ambiental y caudal de flujo         *
+*      de humedad de tierra, temperatura ambiental y caudal de flujo.         *
 *                                                                            *
 ******************************************************************************/
 
