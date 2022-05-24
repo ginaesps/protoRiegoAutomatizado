@@ -21,7 +21,7 @@ Sensores sensors;
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~CONFIGURACIÓN DE CLIENTE PARA HACER PUBLICACIONES MQTT~~~~~~~~~~~~~~*/
 #include <PubSubClient.h>
   PubSubClient client ( ESP32_WIFI );
-const char* HOTSPOT_WIFI = "EX_6CHOTSPOT";
+const char* HOTSPOT_WIFI = "EX_6C_HOTSPOT";
 const char* HOTSPOT_PWD = "12345678";  
 const char* MQTT_SERVER = "test.mosquitto.org";
 #define MQTT_PORT 1883
@@ -34,6 +34,10 @@ const char* MQTT_SERVER = "test.mosquitto.org";
 
 #define MICROSD_PIN 5
 #define EXTENSION ".json"
+
+String tiempoBombaOn = "";
+String diaBombaOn = "";
+bool bombaOn = 0;
 
 #include "RTClib.h"
   RTC_DS1307 rtc;

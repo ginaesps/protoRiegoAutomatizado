@@ -2,9 +2,9 @@
 *                                                                            *
 *      NOMBRE:      Práctica 2.1.                                            *
 *      FECHA:       18 de mayo de 2022.                                      *
-*      VERSIÓN:     2.1.                                                     *
+*      VERSIÓN:     2.2                                                      *
 *                                                                            *
-*      AUTOR:       Regina Espinosa González                                 *
+*      AUTORES:     Regina Espinosa González                                 *
 *                   María Alejandra Velazco Baltazar                         *
 *                   Adelina Mancilla Rojas                                   *
 *                   Andrew Joshua Craig Montiel                              *
@@ -28,14 +28,14 @@
 *                                                                            *
 *      DESCRIPCIÓN DEL PROGRAMA: Creación de prototipo de riego automatizado *
 *      con registro en una MicroSD, medición de tiempo con RTC y sensores    *  
-*      de humedad de tierra, temperatura ambiental y caudal de flujo.         *
+*      de humedad de tierra, temperatura ambiental y caudal de flujo.        *
 *                                                                            *
 ******************************************************************************/
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~LLAMADO A ENCABEZADO DE INSTANCIAS~~~~~~~~~~~~~~*/
 #include "practicaTodo.h" //Llama la libreria de las instancias
 
-void setup() {
+void setup() { //configuraciones iniciales
   Serial.begin(115200); //Configuración de Bauhdios
   
   /*~~~~~~~CONFIGURACIÓN DE PINES A MODO OUTPUT~~~~~~~~~~~~~~*/
@@ -61,18 +61,19 @@ void setup() {
   mqtt.setup_WiFi ( );
   mqtt.set_MQTT_server ( ); // inicialización de MQTT server
 
+  /*~~~~~FUNCIÓN DE CALLBACK PARA SUSCRIPCIÓN MQTT POR PARTE DEL CLIENTE~~~~~~~~~~~*/
   client.setCallback(callback); 
 }
 
-void loop() { 
+void loop() { //código que se va a ejecutar en repetición
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~INICIALIZAR millis() EN MÉTODOS DE tareas.h~~~~~~~~~~~~~~*/
   tasks.currentMillis = millis(); 
   
   /*~~~~~~~~~~~~~~~~~~~~~~~~~~~LLAMADA A FUNCIONES DE tareas.h -> Tareas::nameTask() ~~~~~~~~~~~~~~*/
-  tasks._flujometro(); //llama a flujometro (mide caudal de flujo)
-  tasks._higometroBomba(); //(des)activa bomba mediante relevador
-  tasks._dht11(); //llama a DHT11
-  tasks._printLCD(); //imprime datos en lcd
+  mqtt.reconnect_MQTT ( ); //verificación de conexión a MQTT
+  tasks._higometroBomba(); //(des)activación de bomba mediante relevador
+  tasks._dht11(); //medición de temperatura ambiental
+  tasks._printLCD(); //impresión de datos en lcd
   tasks._connectionMQTT(); //reconexión y publicación a MQTT
   
 }
